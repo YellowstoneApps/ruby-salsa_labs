@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://hq-salsa.wiredforchange.com/api/authenticate.sjs?email=allison%40example.com&password=password
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      cookie:
+      - ''
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - nginx/1.0.0
+      date:
+      - Sat, 28 Dec 2013 02:56:00 GMT
+      content-type:
+      - text/xml;charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      keep-alive:
+      - timeout=20
+      set-cookie:
+      - JSESSIONID=646F52AB13B1FCD5AA7B94A935B6E479-n3; Path=/; Secure; HttpOnly,
+        hqtab_2=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT, READONLY_Short_Name="";
+        Expires=Thu, 01-Jan-1970 00:00:10 GMT, SRV=vweb208; path=/
+      requesturi:
+      - "/api/authenticate.sjs?email=allison%40example.com&password=password"
+      cache-control:
+      - private
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\"?>\n\t\t\t<data>\n\t\t\t<error>Invalid login,
+        please try again.</error>\n\t\t\t</data>"
+    http_version: 
+  recorded_at: Sat, 28 Dec 2013 02:56:00 GMT
+recorded_with: VCR 2.8.0
