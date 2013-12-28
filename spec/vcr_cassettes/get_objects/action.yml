@@ -1,0 +1,131 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://hq-salsa.wiredforchange.com/api/authenticate.sjs?email=allison%40wearevelocity.com&password=password
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      cookie:
+      - ''
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - nginx/1.0.0
+      date:
+      - Sat, 28 Dec 2013 02:59:27 GMT
+      content-type:
+      - text/xml;charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      keep-alive:
+      - timeout=20
+      set-cookie:
+      - JSESSIONID=262F7F3397C20DC57A40B31D49F2D35E-n4; Path=/; Secure; HttpOnly,
+        hqtab_2=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT, READONLY_Short_Name="";
+        Expires=Thu, 01-Jan-1970 00:00:10 GMT, SRV=vweb217; path=/
+      requesturi:
+      - "/api/authenticate.sjs?email=allison%40wearevelocity.com&password=password"
+      cache-control:
+      - private
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\"?>\n\t\t\t<data organization_KEY=\"6120\">\n\t\t\t<message>Successful
+        Login</message>\n\t\t\t</data>"
+    http_version: 
+  recorded_at: Sat, 28 Dec 2013 02:59:27 GMT
+- request:
+    method: get
+    uri: https://hq-salsa.wiredforchange.com/api/getObjects.sjs?object=Action
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      cookie:
+      - JSESSIONID=262F7F3397C20DC57A40B31D49F2D35E-n4; Path=/; Secure; HttpOnly,
+        hqtab_2=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT, READONLY_Short_Name="";
+        Expires=Thu, 01-Jan-1970 00:00:10 GMT, SRV=vweb217; path=/
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - nginx/1.0.0
+      date:
+      - Sat, 28 Dec 2013 02:59:27 GMT
+      content-type:
+      - text/xml;charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      keep-alive:
+      - timeout=20
+      requesturi:
+      - "/api/getObjects.sjs?object=Action"
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?>
+        <data organization_KEY="6120">
+          <Action>
+            <item>
+              <action_KEY>6656</action_KEY>
+              <organization_KEY>6120</organization_KEY>
+              <chapter_KEY/>
+              <Last_Modified>Tue Dec 17 2013 11:08:58 GMT-0500 (EST)</Last_Modified>
+              <Date_Created>Wed Sep 26 2012 14:30:02 GMT-0400 (EDT)</Date_Created>
+              <Reference_Name>My TItle</Reference_Name>
+              <Title>My Action Title</Title>
+              <Description>&lt;p&gt;&amp;#160;&lt;/p&gt;</Description>
+              <Allow_Comments_BOOLVALUE>false</Allow_Comments_BOOLVALUE>
+              <Allow_Comments>false</Allow_Comments>
+              <Comment_Question/>
+              <Max_Number_Of_Emails/>
+              <Max_Number_Of_Faxes/>
+              <Signatures/>
+              <Signature_Goal/>
+              <Deadline/>
+              <Signature_Minimum_for_Display/>
+              <Allow_Anonymous_BOOLVALUE>false</Allow_Anonymous_BOOLVALUE>
+              <Allow_Anonymous>false</Allow_Anonymous>
+              <Footer>&lt;p&gt;&amp;#160;&lt;/p&gt;</Footer>
+              <Request>First_Name,Last_Name,Street,Street_2,City,State,Zip,Email</Request>
+              <Required>First_Name,Last_Name,Street,City,State,Zip,Email</Required>
+              <Thank_You_Text/>
+              <redirect_path/>
+              <alternate_action_path/>
+              <email_trigger_KEYS/>
+              <add_to_groups_KEYS/>
+              <optionally_add_to_groups_KEYS/>
+              <Restriction_Type/>
+              <Restricted_Regions/>
+              <Restricted_Districts/>
+              <Restricted_Text/>
+              <No_Target_Text/>
+              <template_KEY/>
+              <Style>Targeted</Style>
+              <style_path/>
+              <Status/>
+              <linkRequest/>
+              <linkRequired/>
+              <key>6656</key>
+              <object>action</object>
+            </item>
+            <count>1</count>
+          </Action>
+        </data>
+    http_version: 
+  recorded_at: Sat, 28 Dec 2013 02:59:27 GMT
+recorded_with: VCR 2.8.0
