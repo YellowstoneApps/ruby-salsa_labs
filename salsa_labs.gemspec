@@ -16,15 +16,14 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
   gem.licenses      = ['LICENSE']
 
-  gem.add_runtime_dependency 'dotenv'
-  gem.add_runtime_dependency 'faraday'
-  gem.add_runtime_dependency 'httparty'
-  gem.add_runtime_dependency 'nokogiri'
+  gem.add_runtime_dependency 'dotenv', '~> 0.9'
+  gem.add_runtime_dependency 'faraday', '~> 0.8'
+  gem.add_runtime_dependency 'httparty', '~> 0.12'
+  gem.add_runtime_dependency 'nokogiri', '~> 1.5'
 
-  gem.add_development_dependency 'fakeweb'
-  gem.add_development_dependency 'rspec'
-  gem.add_development_dependency 'simplecov'
-  gem.add_development_dependency 'vcr'
-  gem.add_development_dependency 'webmock'
+  gem.add_development_dependency 'rspec', '~> 2.14'
+  gem.add_development_dependency 'simplecov', '~> 0.8'
+  gem.add_development_dependency 'vcr', '~> 2.8'
+  gem.add_development_dependency 'webmock', '~> 1.16'
 
 end
