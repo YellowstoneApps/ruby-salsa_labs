@@ -12,7 +12,7 @@ describe SalsaLabs::SalsaObject do
   let(:salsa_object) { SalsaLabs::SalsaObject.new(attributes) }
 
   describe "#attributes" do
-    it "returns the hash used to constuct the object" do
+    it "returns the hash used to construct the object" do
       expect(salsa_object.attributes).to eq(attributes)
     end
   end
