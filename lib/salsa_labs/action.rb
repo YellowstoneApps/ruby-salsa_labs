@@ -5,12 +5,6 @@ module SalsaLabs
   ##
   class Action < SalsaObject
 
-    attr_reader :attributes
-
-    def initialize(attributes)
-      @attributes = attributes
-    end
-
     def action_key
       (attributes['action_key'] || 0).to_i
     end
