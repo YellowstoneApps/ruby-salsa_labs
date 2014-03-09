@@ -4,7 +4,7 @@
 Version](https://badge.fury.io/rb/salsa_labs.png)](http://badge.fury.io/rb/salsa_labs)
 [![Build Status](https://travis-ci.org/VelocityStrategies/ruby-salsa_labs.png?branch=master)](https://travis-ci.org/VelocityStrategies/ruby-salsa_labs)
 [![Dependency Status](https://gemnasium.com/VelocityStrategies/ruby-salsa_labs.png)](https://gemnasium.com/VelocityStrategies/ruby-salsa_labs)
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/VelocityStrategies/ruby-salsa_labs)
+[![Code Climate](https://codeclimate.com/github/VelocityStrategies/ruby-salsa_labs.png)](https://codeclimate.com/github/VelocityStrategies/ruby-salsa_labs)
 
 ``salsa_labs`` can fetch data from the [Salsa Labs](http://salsalabs.com) API.
 
