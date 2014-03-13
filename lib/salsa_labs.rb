@@ -6,6 +6,7 @@ require 'salsa_labs/api_client'
 require 'salsa_labs/salsa_object'
 require 'salsa_labs/action'
 require 'salsa_labs/actions_fetcher'
+require 'salsa_labs/supporter'
 
 module SalsaLabs
 
