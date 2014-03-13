@@ -10,10 +10,6 @@ module SalsaLabs
       (attributes['supporter_key'] || 0).to_i
     end
 
-    def organization_key
-      (attributes['organization_key'] || 0).to_i
-    end
-
     def chapter_key
       (attributes['chapter_key'] || 0).to_i
     end
@@ -82,9 +78,9 @@ module SalsaLabs
       attributes['status']
     end
 
-    # def self.fetch(credentials = {})
-    #   SupportersFetcher.new(credentials).fetch
-    # end
+    def self.fetch(credentials = {})
+      SupportersFetcher.new(credentials).fetch
+    end
 
   end
 end
