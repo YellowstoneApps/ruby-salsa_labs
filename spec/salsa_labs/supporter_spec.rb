@@ -148,18 +148,18 @@ describe SalsaLabs::Supporter do
     end
   end
 
-  # describe ".fetch" do
-  #   let(:supporter_fetcher) { double('SupportersFetcher', fetch: []) }
+  describe ".fetch" do
+    let(:supporters_fetcher) { double('SupportersFetcher', fetch: []) }
 
-  #   before(:each) do
-  #     SalsaLabs::SupportersFetcher.stub(new: supporters_fetcher)
-  #   end
+    before(:each) do
+      SalsaLabs::SupportersFetcher.stub(new: supporters_fetcher)
+    end
 
-  #   it "calls .fetch on an SalsaLabs::SupportersFetcher object" do
-  #     SalsaLabs::Supporter.fetch
+    it "calls .fetch on an SalsaLabs::SupportersFetcher object" do
+      SalsaLabs::Supporter.fetch
 
-  #     expect(supporters_fetcher).to have_received(:fetch)
-  #   end
-  # end
+      expect(supporters_fetcher).to have_received(:fetch)
+    end
+  end
 
 end
