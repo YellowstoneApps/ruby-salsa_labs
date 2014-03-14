@@ -79,8 +79,9 @@ module SalsaLabs
       attributes['status']
     end
 
-    def self.fetch(credentials = {})
-      SupportersFetcher.new(credentials).fetch
+    def self.fetch(filter_parameters = {}, credentials = {})
+      SupportersFetcher.new(filter_parameters, credentials).fetch
+    end
     end
 
   end

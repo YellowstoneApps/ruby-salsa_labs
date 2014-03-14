@@ -21,8 +21,8 @@ module SalsaLabs
       attributes['title']
     end
 
-    def self.fetch(credentials = {})
-      ActionsFetcher.new(credentials).fetch
+    def self.fetch(filter_parameters = {}, credentials = {})
+      ActionsFetcher.new(filter_parameters, credentials).fetch
     end
 
   end
