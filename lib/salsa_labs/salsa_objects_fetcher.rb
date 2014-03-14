@@ -43,7 +43,7 @@ module SalsaLabs
       def attributes
         children.inject({}) do |memo, attribute|
           memo[attribute.name.downcase] = attribute.text
-          attribute
+          memo
         end
       end
 
