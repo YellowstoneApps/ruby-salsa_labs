@@ -1,6 +1,6 @@
 module SalsaLabs
   ##
-  # Action represents a single instance of an advocacy campaign ("Action") in
+  # Action represents a single instance of a member action in
   # the Salsa Labs CRM.
   ##
   class Action < SalsaObject

@@ -10,7 +10,8 @@ module SalsaLabs
     end
 
     def fetch
-      #override this to create SalsaLabs:: objects with SalsaLabsApiObjectNode.new(node).attributes
+      # override this in child classes
+      # create SalsaLabs:: objects with SalsaLabsApiObjectNode.new(node).attributes
       item_nodes
     end
 
@@ -23,7 +24,8 @@ module SalsaLabs
     end
 
     def api_parameters
-      # filter_parameters.merge may be useful here
+      # override in child classes
+      filter_parameters
     end
 
     def item_nodes

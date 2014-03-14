@@ -33,13 +33,13 @@ By default, you can store your API credentials as the environment variables ``SA
 client = SalsaLabs::ApiClient.new({email: 'barry@example.com', password: 'myPassword'})
 
 # Perform arbitrary requests from Salsa API. If not already authenticated, client will do so automatically.
-client.fetch('getObjects.sjs', {object: 'Supporter'})
+client.fetch('/api/getObjects.sjs', {object: 'Supporter'})
 # => Returns XML output of all supporters returned by API.
 
 # Pass filter criteria to #fetch to retrieve a more focused result set.
 # Filtering can be necessary if your result set exceeds allowed API limits.
 # This query pulls all supporters with an address in Washington, D.C.
-client.fetch('getObjects.sjs', {object: 'Supporter', State: 'DC'})
+client.fetch('/api/getObjects.sjs', {object: 'Supporter', State: 'DC'})
 ```
 
 You can get a list of API calls and information about Salsa database objects here:

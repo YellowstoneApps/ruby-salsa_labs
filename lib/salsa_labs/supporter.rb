@@ -1,6 +1,6 @@
 module SalsaLabs
   ##
-  # Supporter represents a single user in the Salsa Labs CRM.
+  # Supporter represents a single member in the Salsa Labs CRM.
   # Standard field list from documentation at
   #   https://help.salsalabs.com/entries/21518315-Standard-supporter-fields-the-supporter-object-
   ##
@@ -39,7 +39,8 @@ module SalsaLabs
     end
 
     def receive_email
-      (attributes['receive_email'] == 1)
+      #convert tinyint to bool
+      (attributes['receive_email'] == '1')
     end
 
     def phone
