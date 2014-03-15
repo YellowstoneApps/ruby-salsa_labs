@@ -4,22 +4,8 @@ module SalsaLabs
   # the Salsa Labs CRM.
   ##
   class Action < SalsaObject
-
-    def action_key
-      (attributes['action_key'] || 0).to_i
-    end
-
-    def description
-      attributes['description']
-    end
-
-    def reference_name
-      attributes['reference_name']
-    end
-
-    def title
-      attributes['title']
-    end
+    integer_attributes :action_key
+    string_attributes :description, :reference_name, :title
 
     def self.fetch(filter_parameters = {}, credentials = {})
       ActionsFetcher.new(filter_parameters, credentials).fetch
