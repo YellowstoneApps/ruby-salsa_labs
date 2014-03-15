@@ -37,6 +37,12 @@ module SalsaLabs
       perform_get_request(endpoint, params).body
     end
 
+    def post(endpoint, params)
+      authenticate unless authenticated?
+
+      perform_post_request(endpoint, params).body
+    end
+
     private
 
     attr_reader :authenticated,
@@ -67,6 +73,19 @@ module SalsaLabs
       response = connection.get do |request|
         request.headers['cookie'] = authentication_cookie.to_s
         request.url(endpoint, params)
+      end
+
+      raise_if_error!(response)
+
+      response
+    end
+
+    def perform_post_request(endpoint, params)
+      response = connection.post do |request|
+        request.headers['cookie'] = authentication_cookie.to_s
+        request.url(endpoint, params)
+        # Strangely, Salsa doesn't expect body data, just url parameters
+        # no need for request.body = ...
       end
 
       raise_if_error!(response)

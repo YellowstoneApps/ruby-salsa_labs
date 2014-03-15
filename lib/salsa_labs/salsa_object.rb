@@ -15,5 +15,21 @@ module SalsaLabs
       (attributes['organization_key'] || 0).to_i
     end
 
+    #TODO, make these singletons?
+    def save(credentials = {})
+      if not @saver
+        @saver = SalsaObjectsSaver.new(credentials)
+      end
+      @saver.save(self.attributes)
+    end
+
+    def tag(tag)
+      if not @saver
+        @saver = SalsaObjectsSaver.new(credentials)
+      end
+
+      @saver.tag(self,tag)
+    end
+
   end
 end
