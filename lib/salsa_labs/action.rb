@@ -1,7 +1,7 @@
 module SalsaLabs
   ##
-  # Action represents a single instance of an advocacy campaign ("Action") in
-  # the Salsa Labs / DemocracyInAction CRM.
+  # Action represents a single instance of a member action in
+  # the Salsa Labs CRM.
   ##
   class Action < SalsaObject
 
@@ -21,8 +21,8 @@ module SalsaLabs
       attributes['title']
     end
 
-    def self.fetch(credentials = {})
-      ActionsFetcher.new(credentials).fetch
+    def self.fetch(filter_parameters = {}, credentials = {})
+      ActionsFetcher.new(filter_parameters, credentials).fetch
     end
 
   end

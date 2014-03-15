@@ -26,6 +26,8 @@ Or install it yourself as:
 
 By default, you can store your API credentials as the environment variables ``SALSA_LABS_API_EMAIL`` and ``SALSA_LABS_API_PASSWORD`` to avoid the need to re-enter your password multiple times. Otherwise you will need to pass your credentials into the ``SalsaLabs::ApiClient`` or appropriate fetching method as you call it.
 
+You may also specify the sandbox with the environment variable ``SALSA_LABS_API_URL`` or by passing it in the credentials hash. Otherwise, the API URL defaults to ``https://hq-salsa.wiredforchange.com``
+
 ``SalsaLabs::ApiClient`` is a general-purpose object for performing GET requests from the Salsa API. 
 
 ```ruby
@@ -33,19 +35,19 @@ By default, you can store your API credentials as the environment variables ``SA
 client = SalsaLabs::ApiClient.new({email: 'barry@example.com', password: 'myPassword'})
 
 # Perform arbitrary requests from Salsa API. If not already authenticated, client will do so automatically.
-client.fetch('getObjects.sjs', {object: 'Supporter'})
+client.fetch('/api/getObjects.sjs', {object: 'Supporter'})
 # => Returns XML output of all supporters returned by API.
 
 # Pass filter criteria to #fetch to retrieve a more focused result set.
 # Filtering can be necessary if your result set exceeds allowed API limits.
 # This query pulls all supporters with an address in Washington, D.C.
-client.fetch('getObjects.sjs', {object: 'Supporter', State: 'DC'})
+client.fetch('/api/getObjects.sjs', {object: 'Supporter', State: 'DC'})
 ```
 
 You can get a list of API calls and information about Salsa database objects here:
 [https://help.salsalabs.com/entries/23537918-Getting-data-from-Salsa](https://help.salsalabs.com/entries/23537918-Getting-data-from-Salsa)
 
-Currently specific functionality exists to work with Action campaigns, but more objects will be added later.
+Currently specific functionality exists to work with Action campaigns and Supporters. More objects will be added later.
 
 ```ruby
 # Fetch all actions from Salsa. First argument is filter criteria, second argument is credentials if you are not storing them as environment variables.
@@ -54,10 +56,20 @@ actions = SalsaLabs::Action.fetch({}, {})
 
 # Examine the Action.
 actions.first.attributes
-# => {'title' => 'My Action Title', 'organization_key' => '90210', action_key => '1234'}
+# => {"action_key"=>"12345", "organization_key"=>"90210", "title"=>"My Action Title" ...}
 ```
 
-``SalsaLabs::Action#attributes`` returns a hash corresponding to all the attributes returned by the API, so it should accommodate custom fields and/or new fields added later by SalsaLabs. All attribute names are downcased. 
+```ruby
+# Fetch all supporters from Salsa. First argument is filter criteria, second argument is credentials if you are not storing them as environment variables.
+supporters = SalsaLabs::Supporter.fetch({}, {})
+# => Array of SalsaLabs::Supporter objects.
+
+# Examine the Supporter.
+supporters.first.attributes
+# => {"supporter_key"=>"12345", "organization_key"=>"90210", "first_name"=>"John", "mi"=>"Jacob", "last_name"=>"Jingleheimer Schmidt" ...}
+```
+
+``SalsaLabs::Object#attributes`` returns a hash corresponding to all the attributes returned by the API, so it should accommodate custom fields and/or new fields added later by SalsaLabs. All attribute names are downcased. 
 
 ## Dependencies
 
