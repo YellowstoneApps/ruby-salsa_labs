@@ -27,6 +27,13 @@ describe SalsaLabs::SupportersFetcher do
       expect(results).to be_a(Array)
       expect(results.first).to be_a(SalsaLabs::Supporter)
     end
-  end
 
+    describe 'supporter parsing' do
+      let(:supporter) { SalsaLabs::SupportersFetcher.new.fetch.first }
+
+      specify { supporter.supporter_key.should eq(33984504)  }
+      specify { supporter.receive_email.should eq(true) }
+      specify { supporter.first_name.should eq('John') }
+    end
+  end
 end
