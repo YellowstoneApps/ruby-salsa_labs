@@ -15,20 +15,31 @@ module SalsaLabs
       (attributes['organization_key'] || 0).to_i
     end
 
+    def object_name
+      self.class.name.split('::').last.downcase
+    end
+
+    def object_key
+      object_name+'_key'
+    end
+
     #TODO, make these singletons?
     def save(credentials = {})
       if not @saver
         @saver = SalsaObjectsSaver.new(credentials)
       end
-      @saver.save(self.attributes)
+      @saver.save(self.attributes.update({'object'=>object_name}))
     end
 
-    def tag(tag)
+    def tag(tag, credentials = {})
       if not @saver
         @saver = SalsaObjectsSaver.new(credentials)
       end
 
-      @saver.tag(self,tag)
+      params = {'object'=>object_name,
+                'key'=>self.attributes[object_key],
+                'tag'=>tag}
+      @saver.tag(self,params)
     end
 
     def self.integer_attributes(*methods)

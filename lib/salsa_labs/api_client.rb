@@ -83,9 +83,9 @@ module SalsaLabs
     def perform_post_request(endpoint, params)
       response = connection.post do |request|
         request.headers['cookie'] = authentication_cookie.to_s
+        params.update({'xml'=>nil}) #tell Salsa we want the response back as XML
+
         request.url(endpoint, params)
-        # Strangely, Salsa doesn't expect body data, just url parameters
-        # no need for request.body = ...
       end
 
       raise_if_error!(response)

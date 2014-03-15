@@ -8,11 +8,28 @@ module SalsaLabs
       @client = SalsaLabs::ApiClient.new(credentials)
     end
 
-    def save(attributes)
-      parameters = SalsaLabsApiObjectParameterList.new(attributes)
-      puts parameters
+    def save(data)
+      parameters = SalsaLabsApiObjectParameterList.new(data)
+      api_call(parameters.attributes.update(data))
+    end
 
-      api_call.post(parameters)
+    #should this be a separate method?
+    #or dispatch within save based on argument type?
+    def save_many(collection)
+      collection.each do |data|
+        save(data)
+      end
+    end
+
+    def tag(object,data)
+      puts data
+      api_call(object.attributes.update(data))
+    end
+
+    def tag_many(collection,tag)
+      collection.each do |data|
+        tag(data)
+      end
     end
 
     private
@@ -20,7 +37,7 @@ module SalsaLabs
     attr_reader :client
 
     def api_call(data)
-      client.post('/api/save', data)
+      client.post('/save', data)
     end
 
     def parse_response(response)
@@ -35,7 +52,6 @@ module SalsaLabs
 
       def initialize(attributes)
         @attributes = attributes
-
         capitalize
       end
 
@@ -56,7 +72,7 @@ module SalsaLabs
           elsif key == 'uid'
             #uid is always lower case
             capitalized_key = 'uid'
-          elsif key.start_with 'private'
+          elsif key.start_with? 'private'
             # private_ab_cd_1 -> PRIVATE_Ab_Cd_1
             parts = key.split('_')
             last_parts = parts[1..-1].map{|part| part.capitalize}
@@ -67,12 +83,13 @@ module SalsaLabs
           end
 
           capitalized_attributes[capitalized_key] = value
-
-          puts capitalized_key
         end
 
         capitalized_attributes
       end
+
+      attr_reader :attributes
+
     end
 
   end
