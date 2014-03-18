@@ -10,17 +10,25 @@ module SalsaLabs
     end
 
     def fetch
-      # override this in child classes
-      # create SalsaLabs:: objects with SalsaLabsApiObjectNode.new(node).attributes
-      item_nodes
+      item_objects(get_objects)
+    end
+
+    def tagged
+      item_objects(get_tagged_objects)
     end
 
     private
 
     attr_reader :client, :filter_parameters
 
-    def api_call
+    def get_objects
       client.fetch('/api/getObjects.sjs', api_parameters)
+      #Note, this will return at most 500 records
+      #TODO, implement pagination
+    end
+
+    def get_tagged_objects
+      client.fetch('/api/getTaggedObjects.sjs', api_parameters)
     end
 
     def api_parameters
@@ -30,11 +38,17 @@ module SalsaLabs
         params = {} 
       end
 
-      params.merge(object: object_parameter)
+      params.merge(object: @object_class.name.split('::').last.downcase)
     end
 
-    def item_nodes
-      Nokogiri::XML(api_call).css('item')
+    def item_objects(url)
+      item_nodes(url).map do |node|
+        @object_class.new(ApiObjectNode.new(node).attributes)
+      end
+    end
+
+    def item_nodes(url)
+      Nokogiri::XML(url).css('item')
     end
 
     ##

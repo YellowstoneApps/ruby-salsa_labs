@@ -7,9 +7,7 @@ require 'salsa_labs/salsa_object'
 require 'salsa_labs/salsa_objects_fetcher'
 require 'salsa_labs/salsa_objects_saver'
 require 'salsa_labs/action'
-require 'salsa_labs/actions_fetcher'
 require 'salsa_labs/supporter'
-require 'salsa_labs/supporters_fetcher'
 
 module SalsaLabs
 
