@@ -13,8 +13,8 @@ module SalsaLabs
       item_objects(get_objects)
     end
 
-    def tagged
-      item_objects(get_tagged_objects)
+    def tagged(tag)
+      item_objects(get_tagged_objects(tag))
     end
 
     private
@@ -27,8 +27,9 @@ module SalsaLabs
       #TODO, implement pagination
     end
 
-    def get_tagged_objects
-      client.fetch('/api/getTaggedObjects.sjs', api_parameters)
+    def get_tagged_objects(tag)
+      tag_parameters = api_parameters.update({'tag'=>tag})
+      client.fetch('/api/getTaggedObjects.sjs', tag_parameters)
     end
 
     def api_parameters
@@ -40,6 +41,7 @@ module SalsaLabs
 
       params.merge(object: @object_class.name.split('::').last.downcase)
     end
+
 
     def item_objects(url)
       item_nodes(url).map do |node|

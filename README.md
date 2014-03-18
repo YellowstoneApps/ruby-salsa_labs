@@ -67,6 +67,23 @@ supporters = SalsaLabs::Supporter.fetch({'state'=>'NY'}, {})
 # Examine the Supporter.
 supporters.first.attributes
 # => {"supporter_key"=>"12345", "organization_key"=>"90210", "first_name"=>"John", "mi"=>"Jacob", "last_name"=>"Jingleheimer Schmidt" ...}
+
+# Futher refine your search with tags
+supporters = SalsaLabs::Supporter.tagged('awesome', {'state'=>'NY'}, {})
+#or multiple tags OR-ed together
+supporters = SalsaLabs::Supporter.tagged(['awesome','super'], {})
+```
+
+```
+#Save supporters to Salsa as they take action
+supporter = SalsaLabs::Supporter.new({'first_name'=>'Jesse','last_name'=>'James','state'=>'MI'})
+supporter.save()
+
+#Save extra information about supporters with a tag
+supporter.tag('outlaw')
+#or a list of tags
+supporter.tag(['gunslinger','train_robber'])
+
 ```
 
 ``SalsaLabs::Object#attributes`` returns a hash corresponding to all the attributes returned by the API, so it should accommodate custom fields and/or new fields added later by SalsaLabs. All attribute names are downcased. 

@@ -28,7 +28,8 @@ module SalsaLabs
       if not @saver
         @saver = SalsaObjectsSaver.new(credentials)
       end
-      @saver.save(self.attributes.update({'object'=>object_name}))
+      new_id = @saver.save(self.attributes.update({'object'=>object_name}))
+      self.attributes.update({'key'=>new_id})
     end
 
     def tag(tag, credentials = {})
@@ -37,9 +38,9 @@ module SalsaLabs
       end
 
       params = {'object'=>object_name,
-                'key'=>self.attributes[object_key],
+                'key'=>self.attributes['key'],
                 'tag'=>tag}
-      @saver.tag(self,params)
+      @saver.save(params)
     end
 
     def self.integer_attributes(*methods)

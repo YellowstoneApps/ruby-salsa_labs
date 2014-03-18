@@ -84,7 +84,7 @@ module SalsaLabs
     def perform_post_request(endpoint, params)
       response = connection.post do |request|
         request.headers['cookie'] = authentication_cookie.to_s
-        params.update({'xml'=>nil}) #tell Salsa we want the response back as XML
+        params.update({'xml'=>true}) #tell Salsa we want the response back as XML
 
         request.url(endpoint, params)
       end
@@ -125,7 +125,10 @@ module SalsaLabs
         #re-capitalize according to Salsa's unique requirements
 
         #deal with exceptions first
-        if key.end_with? '_key'
+        if ['key','object','tag'].include? key
+          #no change, these must not be capitalized
+          capitalized_key = key
+        elsif key.end_with? '_key'
           #asdf_key -> asdf_KEY
           parts = key.split('_')
           capitalized_key = [parts[0..-2],parts.last.upcase].join('_')

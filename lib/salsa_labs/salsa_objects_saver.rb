@@ -10,7 +10,14 @@ module SalsaLabs
 
     def save(data)
       parameters = SalsaLabs::ApiObjectParameterList.new(data)
-      api_call(parameters.attributes.update(data))
+      response = parse_response(api_call(parameters.attributes))
+      if response.css('success')
+        return response.css('success').attribute('key').value.to_i
+      else
+        raise SalsaLabs::Error.new(response),
+          "Unable to save object: #{response}"
+        return false
+      end
     end
 
     #should this be a separate method?
@@ -18,16 +25,6 @@ module SalsaLabs
     def save_many(collection)
       collection.each do |data|
         save(data)
-      end
-    end
-
-    def tag(object,data)
-      api_call(object.attributes.update(data))
-    end
-
-    def tag_many(collection,tag)
-      collection.each do |data|
-        tag(data)
       end
     end
 

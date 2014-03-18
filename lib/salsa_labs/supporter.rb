@@ -15,6 +15,10 @@ module SalsaLabs
       SupportersFetcher.new(filter_parameters, credentials).fetch
     end
 
+    def self.tagged(tag, filter_parameters={}, credentials = {})
+      SupportersFetcher.new(filter_parameters).tagged(tag)
+    end
+
   end
 
   ##
