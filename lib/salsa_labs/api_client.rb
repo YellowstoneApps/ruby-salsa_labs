@@ -65,6 +65,7 @@ module SalsaLabs
         new(url: @api_url) do |faraday|
         
         faraday.use Faraday::Request::UrlEncoded
+        Faraday::Utils.default_params_encoder = Faraday::FlatParamsEncoder #do not nest repeated parameters
         faraday.adapter Faraday.default_adapter
       end
     end

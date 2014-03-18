@@ -3,16 +3,17 @@ module SalsaLabs
   # Service object to pull back a collection of actions from the Salsa Labs API.
   ##
   class SupportersFetcher < SalsaObjectsFetcher 
-    def fetch
-      item_nodes.map do |node|
-        SalsaLabs::Supporter.new(SalsaLabsApiObjectNode.new(node).attributes)
-      end
+    def initialize(filter_parameters = {}, credentials = {})
+      super(filter_parameters, credentials)
+      @object_parameter = 'supporter'
     end
 
-    private
+    attr_reader :object_parameter
 
-    def api_parameters
-      filter_parameters.merge(object: 'Supporter')
+    def fetch
+      item_nodes.map do |node|
+        SalsaLabs::Supporter.new(ApiObjectNode.new(node).attributes)
+      end
     end
 
   end

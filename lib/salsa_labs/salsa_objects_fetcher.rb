@@ -5,7 +5,7 @@ module SalsaLabs
   class SalsaObjectsFetcher
 
     def initialize(filter_parameters = {}, credentials = {})
-      @filter_parameters = filter_parameters
+      @filter_parameters = SalsaLabs::ApiObjectParameterList.new(filter_parameters)
       @client = SalsaLabs::ApiClient.new(credentials)
     end
 
@@ -24,8 +24,13 @@ module SalsaLabs
     end
 
     def api_parameters
-      # override in child classes
-      filter_parameters
+      if filter_parameters
+        params = {'condition'=>filter_parameters.attributes.flat_map {|k,v| "#{k}=#{v}" }}
+      else
+        params = {} 
+      end
+
+      params.merge(object: object_parameter)
     end
 
     def item_nodes
@@ -36,7 +41,7 @@ module SalsaLabs
     # Object used to translate API's XML node into a hash of attributes for
     # SalsaLabs::Object creation.
     ##
-    class SalsaLabsApiObjectNode
+    class ApiObjectNode
 
       def initialize(xml_element)
         @node = xml_element
