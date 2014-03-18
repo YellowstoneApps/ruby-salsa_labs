@@ -61,8 +61,8 @@ actions.first.attributes
 
 ```ruby
 # Fetch all supporters from Salsa. First argument is filter criteria, second argument is credentials if you are not storing them as environment variables.
-supporters = SalsaLabs::Supporter.fetch({}, {})
-# => Array of SalsaLabs::Supporter objects.
+supporters = SalsaLabs::Supporter.fetch({'state'=>'NY'}, {})
+# => Array of SalsaLabs::Supporter objects who live in NY
 
 # Examine the Supporter.
 supporters.first.attributes

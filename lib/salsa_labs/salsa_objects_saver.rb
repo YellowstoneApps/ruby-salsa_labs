@@ -22,7 +22,6 @@ module SalsaLabs
     end
 
     def tag(object,data)
-      puts data
       api_call(object.attributes.update(data))
     end
 
