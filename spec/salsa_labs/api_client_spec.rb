@@ -4,9 +4,7 @@ require 'vcr'
 describe SalsaLabs::ApiClient do
 
   let(:api_client) do
-    SalsaLabs::ApiClient.new({
-      email: 'allison@example.com', password: 'password'
-    })
+    SalsaLabs::ApiClient.new({email: 'allison@example.com', password: 'password'})
   end
 
   describe "#authenticate" do
@@ -60,20 +58,49 @@ describe SalsaLabs::ApiClient do
   end
 
   describe "#fetch" do
-    it "returns the body of the response from Salsa Labs for that API call" do
-      VCR.use_cassette 'get_objects/action',
+    it "returns actions from the Salsa Labs API" do
+
+      VCR.use_cassette 'successful_authentication',
         match_requests_on: [:path] do
+        api_client.authenticate
 
-        data = api_client.fetch('/api/getObjects.sjs', object: 'Action')
+        VCR.use_cassette 'get_objects/action',
+          match_requests_on: [:path, :query] do
 
-        expect(data.gsub(/\n|\s{2,}/, "")).
-           to eq(salsa_get_objects_for_action_xml_response)
+          data = api_client.fetch('/api/getObjects.sjs', {'object'=>'Action'})
+
+          expect(data.gsub(/\n|\s{2,}/, "")).
+             to eq(salsa_get_objects_for_action_xml_response)
+        end
       end
+    end
+
+    it "returns supporters from the Salsa Labs API" do
+
+      VCR.use_cassette 'successful_authentication',
+        match_requests_on: [:path] do
+        api_client.authenticate
+        
+        VCR.use_cassette 'get_objects/supporter',
+          match_requests_on: [:path, :query] do
+
+          data = api_client.fetch('/api/getObjects.sjs', {'object'=>'Supporter', 'limit'=>1})
+
+          expect(data.gsub(/\n|\s{2,}/, "")).
+             to eq(salsa_get_objects_for_supporter_xml_response)
+        end
+      end
+
     end
   end
 
   def salsa_get_objects_for_action_xml_response
     File.read('spec/fixtures/getObjects.sjs_action.xml').gsub(/\n|\s{2,}/, '')
   end
+
+  def salsa_get_objects_for_supporter_xml_response
+    File.read('spec/fixtures/getObjects.sjs_supporter.xml').gsub(/\n|\s{2,}/, '')
+  end
+
 
 end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://hq-salsa.wiredforchange.com/api/authenticate.sjs?email=allison%40wearevelocity.com&password=password
+    uri: https://hq-salsa.wiredforchange.com/api/authenticate.sjs?email=allison%40example.com&password=password
     body:
       encoding: US-ASCII
       string: ''
@@ -33,7 +33,7 @@ http_interactions:
         hqtab_2=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT, READONLY_Short_Name="";
         Expires=Thu, 01-Jan-1970 00:00:10 GMT, SRV=vweb217; path=/
       requesturi:
-      - "/api/authenticate.sjs?email=allison%40wearevelocity.com&password=password"
+      - "/api/authenticate.sjs?email=allison%40example.com&password=password"
       cache-control:
       - private
     body:
