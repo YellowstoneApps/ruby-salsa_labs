@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['asheren@gmail.com']
   gem.description   = %q{A Ruby binding for the Salsa Labs (http://salsalabs.com) API.}
   gem.summary       = %q{Salsa Labs' API contains information about supporters, donations, and actions. This gem faciliates pulling that information into a Ruby application.}
-  gem.homepage      = "http://github.com/geoffharcourt/ruby-salsa_labs"
+  gem.homepage      = "http://github.com/VelocityStrategies/ruby-salsa_labs"
   gem.files         = `git ls-files`.split($/)
   gem.test_files    = gem.files.grep(%r{^(spec)/})
   gem.require_paths = ['lib']
