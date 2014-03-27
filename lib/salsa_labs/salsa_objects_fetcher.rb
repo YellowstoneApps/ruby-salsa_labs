@@ -5,38 +5,59 @@ module SalsaLabs
   class SalsaObjectsFetcher
 
     def initialize(filter_parameters = {}, credentials = {})
-      @filter_parameters = filter_parameters
+      @filter_parameters = SalsaLabs::ApiObjectParameterList.new(filter_parameters)
       @client = SalsaLabs::ApiClient.new(credentials)
     end
 
     def fetch
-      # override this in child classes
-      # create SalsaLabs:: objects with SalsaLabsApiObjectNode.new(node).attributes
-      item_nodes
+      item_objects(get_objects)
+    end
+
+    def tagged(tag)
+      item_objects(get_tagged_objects(tag))
     end
 
     private
 
     attr_reader :client, :filter_parameters
 
-    def api_call
+    def get_objects
       client.fetch('/api/getObjects.sjs', api_parameters)
+      #Note, this will return at most 500 records
+      #TODO, implement pagination
+    end
+
+    def get_tagged_objects(tag)
+      tag_parameters = api_parameters.update({'tag'=>tag})
+      client.fetch('/api/getTaggedObjects.sjs', tag_parameters)
     end
 
     def api_parameters
-      # override in child classes
-      filter_parameters
+      if filter_parameters
+        params = {'condition'=>filter_parameters.attributes.flat_map {|k,v| "#{k}=#{v}" }}
+      else
+        params = {} 
+      end
+
+      params.merge(object: @object_class.name.split('::').last.downcase)
     end
 
-    def item_nodes
-      Nokogiri::XML(api_call).css('item')
+
+    def item_objects(url)
+      item_nodes(url).map do |node|
+        @object_class.new(ApiObjectNode.new(node).attributes)
+      end
+    end
+
+    def item_nodes(url)
+      Nokogiri::XML(url).css('item')
     end
 
     ##
     # Object used to translate API's XML node into a hash of attributes for
     # SalsaLabs::Object creation.
     ##
-    class SalsaLabsApiObjectNode
+    class ApiObjectNode
 
       def initialize(xml_element)
         @node = xml_element

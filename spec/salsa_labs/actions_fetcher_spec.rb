@@ -18,7 +18,7 @@ describe SalsaLabs::ActionsFetcher do
       SalsaLabs::ActionsFetcher.new.fetch
 
       expect(client).to have_received(:fetch).
-        with('/api/getObjects.sjs', {object: 'Action'})
+        with('/api/getObjects.sjs', {"condition"=>[], object: 'action'})
     end
 
     it "returns an array of SalsaLabs::Action objects" do

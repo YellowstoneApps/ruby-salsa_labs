@@ -18,7 +18,7 @@ describe SalsaLabs::SupportersFetcher do
       SalsaLabs::SupportersFetcher.new.fetch
 
       expect(client).to have_received(:fetch).
-        with('/api/getObjects.sjs', {object: 'Supporter'})
+        with('/api/getObjects.sjs', {"condition"=>[], object: 'supporter'})
     end
 
     it "returns an array of SalsaLabs::Supporter objects" do
