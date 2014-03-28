@@ -1,0 +1,112 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.salsalabs.com/api/getObjects.sjs?limit=1&object=Supporter
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Cookie:
+      - JSESSIONID=F986BEDB929B637F9E2BC43D00125888-n4; Path=/; Secure; HttpOnly,
+        hqtab_2=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT, READONLY_Short_Name="";
+        Expires=Thu, 01-Jan-1970 00:00:10 GMT, SRV=sandbox; path=/
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Fri, 28 Mar 2014 19:49:12 GMT
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=20
+      Requesturi:
+      - /api/getObjects.sjs?limit=1&object=Supporter
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?>
+        <data organization_KEY="17796">
+          <supporter>
+            <item>
+              <supporter_KEY>33984504</supporter_KEY>
+              <organization_KEY>17796</organization_KEY>
+              <chapter_KEY>0</chapter_KEY>
+              <Last_Modified>Fri Mar 14 2014 14:07:29 GMT-0400 (EDT)</Last_Modified>
+              <Date_Created>Fri Mar 14 2014 13:54:10 GMT-0400 (EDT)</Date_Created>
+              <Title>Mr.</Title>
+              <First_Name>John</First_Name>
+              <MI>Jacob</MI>
+              <Last_Name>Jingleheimer Schmidt</Last_Name>
+              <Suffix>IV</Suffix>
+              <Email>johnjacob@example.com</Email>
+              <Password/>
+              <Receive_Email>1</Receive_Email>
+              <Email_Status/>
+              <Email_Preference/>
+              <Soft_Bounce_Count/>
+              <Hard_Bounce_Count/>
+              <Last_Bounce/>
+              <Receive_Phone_Blasts_BOOLVALUE>false</Receive_Phone_Blasts_BOOLVALUE>
+              <Receive_Phone_Blasts>false</Receive_Phone_Blasts>
+              <Phone>123-456-7890</Phone>
+              <Cell_Phone/>
+              <Phone_Provider/>
+              <Work_Phone/>
+              <Pager/>
+              <Home_Fax/>
+              <Work_Fax/>
+              <Street>123 Main St</Street>
+              <Street_2>Apt 404</Street_2>
+              <Street_3/>
+              <City>Schenectady</City>
+              <State>NY</State>
+              <Zip>12345</Zip>
+              <PRIVATE_Zip_Plus_4/>
+              <County/>
+              <District/>
+              <Country>US</Country>
+              <Latitude/>
+              <Longitude/>
+              <Organization/>
+              <Department/>
+              <Occupation/>
+              <Instant_Messenger_Service/>
+              <Instant_Messenger_Name/>
+              <Web_Page/>
+              <Alternative_Email/>
+              <Other_Data_1/>
+              <Other_Data_2/>
+              <Other_Data_3/>
+              <Notes/>
+              <Source>Web</Source>
+              <Source_Details>https://sandbox.salsalabs.com/salsa/hq/supporter/</Source_Details>
+              <Source_Tracking_Code>(No Original Source Available)</Source_Tracking_Code>
+              <Tracking_Code/>
+              <Status/>
+              <uid/>
+              <Timezone/>
+              <Language_Code/>
+              <key>33984504</key>
+              <object>supporter</object>
+            </item>
+            <count>1</count>
+          </supporter>
+        </data>
+    http_version: 
+  recorded_at: Fri, 28 Mar 2014 19:49:13 GMT
+recorded_with: VCR 2.8.0
