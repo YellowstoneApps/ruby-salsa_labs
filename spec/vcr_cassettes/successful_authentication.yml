@@ -2,44 +2,49 @@
 http_interactions:
 - request:
     method: get
-    uri: https://hq-salsa.wiredforchange.com/api/authenticate.sjs?email=allison@example.com&password=password
+    uri: https://sandbox.salsalabs.com/api/authenticate.sjs?email=user@example.com&password=correct_password
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v0.8.8
-      cookie:
+      - Faraday v0.9.0
+      Cookie:
       - ''
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
   response:
     status:
       code: 200
-      message: 
+      message: OK
     headers:
-      server:
+      Server:
       - nginx/1.0.0
-      date:
-      - Sat, 28 Dec 2013 02:55:27 GMT
-      content-type:
+      Date:
+      - Fri, 28 Mar 2014 19:49:11 GMT
+      Content-Type:
       - text/xml;charset=UTF-8
-      transfer-encoding:
+      Transfer-Encoding:
       - chunked
-      connection:
+      Connection:
       - keep-alive
-      keep-alive:
+      Keep-Alive:
       - timeout=20
-      set-cookie:
-      - JSESSIONID=67EBA60BFE7BCF73E2BA0B8E6F9592D0-n2; Path=/; Secure; HttpOnly,
-        hqtab_2=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT, READONLY_Short_Name="";
-        Expires=Thu, 01-Jan-1970 00:00:10 GMT, SRV=vweb213; path=/
-      requesturi:
-      - "/api/authenticate.sjs?email=allison@example.com&password=password"
-      cache-control:
+      Set-Cookie:
+      - JSESSIONID=F986BEDB929B637F9E2BC43D00125888-n4; Path=/; Secure; HttpOnly
+      - READONLY_Short_Name=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT
+      - SRV=sandbox; path=/
+      - hqtab_2=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT
+      Requesturi:
+      - /api/authenticate.sjs?email=user@example.com&password=correct_password
+      Cache-Control:
       - private
     body:
       encoding: UTF-8
-      string: "<?xml version=\"1.0\"?>\n\t\t\t<data organization_KEY=\"6120\">\n\t\t\t<message>Successful
+      string: "<?xml version=\"1.0\"?>\n\t\t\t<data organization_KEY=\"12345\">\n\t\t\t<message>Successful
         Login</message>\n\t\t\t</data>"
     http_version: 
-  recorded_at: Sat, 28 Dec 2013 02:55:27 GMT
+  recorded_at: Fri, 28 Mar 2014 19:49:12 GMT
 recorded_with: VCR 2.8.0
