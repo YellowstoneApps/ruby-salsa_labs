@@ -4,7 +4,7 @@ require 'vcr'
 describe SalsaLabs::ApiClient do
 
   let(:api_client) do
-    SalsaLabs::ApiClient.new({email: 'allison@example.com', password: 'password'})
+    SalsaLabs::ApiClient.new()
   end
 
   describe "#authenticate" do
@@ -14,12 +14,9 @@ describe SalsaLabs::ApiClient do
 
         api_client.authenticate
 
-        expect(api_client.authentication_cookie).to eq(
-          'JSESSIONID=67EBA60BFE7BCF73E2BA0B8E6F9592D0-n2; Path=/; Secure; '\
-          'HttpOnly, hqtab_2=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT, '\
-          'READONLY_Short_Name=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT, '\
-          'SRV=vweb213; path=/'
-        )
+        cookie = CGI::Cookie::parse(api_client.authentication_cookie)
+        expect(cookie).to have_key('JSESSIONID')
+        expect(cookie['Path']).to eq(["/"])
       end
     end
 
@@ -37,6 +34,10 @@ describe SalsaLabs::ApiClient do
     end
 
     context "with improper credentials" do
+      let(:api_client) do
+        SalsaLabs::ApiClient.new({email: 'user@example.com', password: 'incorrect_password'})
+      end
+
       it "raises an exception" do
         VCR.use_cassette 'unsuccessful_authentication',
           match_requests_on: [:path] do
@@ -51,9 +52,9 @@ describe SalsaLabs::ApiClient do
 
   describe "#authenticated?" do
     it "returns the value of the instance variable @authenticated" do
-      api_client.instance_variable_set(:@authenticated, 123)
+      api_client.instance_variable_set(:@authenticated, true)
 
-      expect(api_client.authenticated?).to eq(123)
+      expect(api_client.authenticated?).to eq(true)
     end
   end
 
