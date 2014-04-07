@@ -2,3 +2,4 @@ coverage
 *.gem
 tmp
 .idea
+.env
