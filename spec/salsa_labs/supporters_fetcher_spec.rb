@@ -28,6 +28,13 @@ describe SalsaLabs::SupportersFetcher do
       expect(results.first).to be_a(SalsaLabs::Supporter)
     end
 
+    it 'supports filtering by email' do
+      SalsaLabs::SupportersFetcher.new('Email' => 'george@washington.com').fetch
+
+      expect(client).to have_received(:fetch).
+                          with('/api/getObjects.sjs', {"condition"=>["Email=george@washington.com"], object: 'supporter'})
+    end
+
     describe 'supporter parsing' do
       let(:supporter) { SalsaLabs::SupportersFetcher.new.fetch.first }
 
