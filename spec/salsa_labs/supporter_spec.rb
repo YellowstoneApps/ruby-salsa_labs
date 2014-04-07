@@ -169,4 +169,18 @@ describe SalsaLabs::Supporter do
     end
   end
 
+  describe 'save' do
+
+    let(:object_saver) { double('SalsaObjectsSaver', save: []) }
+
+    before(:each) do
+      SalsaLabs::SalsaObjectsSaver.stub(new: object_saver)
+    end
+
+    it "calls .fetch on an SalsaLabs::SupportersFetcher object" do
+      supporter.save
+
+      expect(object_saver).to have_received(:save)
+    end
+  end
 end
