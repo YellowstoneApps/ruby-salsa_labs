@@ -8,6 +8,7 @@ module SalsaLabs
     attr_reader :attributes
 
     def initialize(params)
+      params.stringify_keys!
       @attributes = params
     end
 

@@ -28,6 +28,13 @@ describe SalsaLabs::Supporter do
 
   let(:supporter) { SalsaLabs::Supporter.new(attributes) }
 
+  describe 'initialization' do
+    let(:attributes) { {:first_name => 'George'} }
+    it 'should accept symbol keys' do
+      supporter.first_name.should == 'George'
+    end
+  end
+
   describe "#attributes" do
     it "returns the attributes hash passed in to initialize" do
       expect(supporter.attributes).to eq(attributes)
