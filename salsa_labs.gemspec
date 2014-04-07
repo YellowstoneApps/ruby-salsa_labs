@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency 'dotenv', '~> 0.9'
   gem.add_runtime_dependency 'faraday', '~> 0.8.8'
-  gem.add_runtime_dependency 'httparty', '~> 0.12'
+  gem.add_runtime_dependency 'httparty', '>= 0.10'
   gem.add_runtime_dependency 'nokogiri', '~> 1.5'
 
   gem.add_development_dependency 'rspec', '~> 2.14'
