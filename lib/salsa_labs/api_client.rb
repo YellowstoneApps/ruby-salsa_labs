@@ -11,7 +11,7 @@ module SalsaLabs
       @email = credentials[:email] || ENV['SALSA_LABS_API_EMAIL']
       @password = credentials[:password] || ENV['SALSA_LABS_API_PASSWORD']
       @api_url = credentials[:url] || ENV['SALSA_LABS_API_URL']
-      if not @api_url
+      unless @api_url
         @api_url = 'https://hq-salsa.wiredforchange.com'
       end
 

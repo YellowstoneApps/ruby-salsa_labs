@@ -25,7 +25,7 @@ module SalsaLabs
 
     #TODO, make these singletons?
     def save(credentials = {})
-      if not @saver
+      unless @saver
         @saver = SalsaObjectsSaver.new(credentials)
       end
       new_id = @saver.save(self.attributes.update({'object'=>object_name}))
@@ -33,7 +33,7 @@ module SalsaLabs
     end
 
     def tag(tag, credentials = {})
-      if not @saver
+      unless @saver
         @saver = SalsaObjectsSaver.new(credentials)
       end
 
