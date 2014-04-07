@@ -71,6 +71,13 @@ describe SalsaLabs::Supporter do
     end
   end
 
+  describe "#first_name=" do
+    it "sets the first name as an attribute" do
+      supporter.first_name = 'Nathan'
+      expect(supporter.first_name).to eq('Nathan')
+    end
+  end
+
   describe "#mi" do
     it "returns the middle initial as an attribute" do
       expect(supporter.mi).to eq('Jacob')

@@ -42,6 +42,10 @@ module SalsaLabs
 
     def self.integer_attributes(*methods)
       methods.each do |method|
+        define_method("#{method}=") do | value |
+          attributes[method.to_s] = value
+        end
+
         define_method(method) do
           (attributes[method.to_s] || 0).to_i
         end
@@ -50,6 +54,10 @@ module SalsaLabs
 
     def self.string_attributes(*methods)
       methods.each do |method|
+        define_method("#{method}=") do | value |
+          attributes[method.to_s] = value
+        end
+
         define_method(method) do
           attributes[method.to_s]
         end
@@ -58,6 +66,10 @@ module SalsaLabs
 
     def self.boolean_attributes(*methods)
       methods.each do |method|
+        define_method("#{method}=") do | value |
+          attributes[method.to_s] = value
+        end
+
         define_method(method) do
           (attributes[method.to_s] == '1') || (attributes[method.to_s] == 1)
         end
