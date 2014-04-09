@@ -27,6 +27,15 @@ describe SalsaLabs::ActionsFetcher do
       expect(results).to be_a(Array)
       expect(results.first).to be_a(SalsaLabs::Action)
     end
+
+    it "parses the actions" do
+      action = SalsaLabs::ActionsFetcher.new.fetch.first
+
+      expect(action.action_key).to eq(6656)
+      expect(action.description).to eq("<p>&#160;</p>")
+      expect(action.title).to eq("My Action Title")
+      expect(action.reference_name).to eq("My TItle")
+    end
   end
 
 end
