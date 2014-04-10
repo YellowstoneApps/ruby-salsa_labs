@@ -27,6 +27,7 @@ module SalsaLabs
     def save(credentials = {})
       new_id = saver(credentials).save(self.attributes.update({'object'=>object_name}))
       self.attributes.update({'key'=>new_id})
+      self.attributes.update({object_key => new_id})
     end
 
     def tag(tag, credentials = {})
