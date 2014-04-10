@@ -69,6 +69,12 @@ describe SalsaLabs::ApiClient do
           expect(data.gsub(/\n|\s{2,}/, "")).
             to eq(salsa_get_objects_for_action_xml_response)
         end
+
+        VCR.use_cassette 'get_objects/action', match_requests_on: [:path, :query] do
+          data = api_client.fetch('/api/getObjects.sjs', {'object'=>'Action'})
+          expect(data.gsub(/\n|\s{2,}/, "")).
+            to eq(salsa_get_objects_for_action_xml_response)
+        end
       end
     end
 
@@ -85,6 +91,14 @@ describe SalsaLabs::ApiClient do
       end
     end
 
+    it 'does an end to end test' do
+      VCR.use_cassette 'successful_authentication', match_requests_on: [:path] do
+        VCR.use_cassette 'get_objects/supporters_by_email', match_requests_on: [:path, :query] do
+          supporters = SalsaLabs::SupportersFetcher.new({'Email' => 'george@washington.com'}, {email: 'user@example.com', password: 'correct_password'}).fetch
+          supporters.should_not be_empty
+        end
+      end
+    end
   end
 
   def salsa_get_objects_for_action_xml_response

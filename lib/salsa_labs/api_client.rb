@@ -65,7 +65,8 @@ module SalsaLabs
         new(url: @api_url) do |faraday|
         
         faraday.use Faraday::Request::UrlEncoded
-        Faraday::Utils.default_params_encoder = Faraday::FlatParamsEncoder #do not nest repeated parameters
+        # not available until faraday 0.9
+        #Faraday::Utils.default_params_encoder = Faraday::FlatParamsEncoder #do not nest repeated parameters
         faraday.adapter Faraday.default_adapter
       end
     end
@@ -73,7 +74,7 @@ module SalsaLabs
     def perform_get_request(endpoint, params)
       response = connection.get do |request|
         request.headers['cookie'] = authentication_cookie.to_s
-        request.url(endpoint, params)
+        request.url("#{endpoint}?#{Faraday::FlatParamsEncoder.encode(params)}", {})
       end
 
       raise_if_error!(response)
