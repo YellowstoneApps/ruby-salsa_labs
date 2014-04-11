@@ -22,7 +22,7 @@ module SalsaLabs
     end
 
     def self.fetch(credentials = {})
-      ActionsFetcher.new(credentials).fetch
+      ActionsFetcher.new({}, credentials).fetch
     end
 
   end
