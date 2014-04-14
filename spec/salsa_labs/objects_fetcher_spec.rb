@@ -51,4 +51,16 @@ describe SalsaLabs::ObjectsFetcher do
     expect(supporter.supporter_key).to eq(31752865)
     expect(supporter.email).to eq("chris@example.com")
   end
+
+  it "parses supporter actions" do
+    client = double('API Client', fetch: File.read('spec/fixtures/getObjects.sjs_supporter_actions.xml'))
+    supporter_action = SalsaLabs::ObjectsFetcher.new(type: 'supporter_action',
+                                                     item_class: SalsaLabs::SupporterAction,
+                                                     filters: {},
+                                                     client: client).fetch.first
+
+    expect(supporter_action.supporter_action_key).to eq(898207)
+    expect(supporter_action.supporter_key).to eq(123)
+    expect(supporter_action.action_key).to eq(234)
+  end
 end
