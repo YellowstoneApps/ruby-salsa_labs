@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<data organization_KEY="6120">
+  <supporter>
+    <item>
+      <supporter_KEY>31752865</supporter_KEY>
+      <organization_KEY>6120</organization_KEY>
+      <chapter_KEY/>
+      <Last_Modified>Fri Mar 19 2010 17:43:20 GMT-0400 (EDT)</Last_Modified>
+      <Date_Created>Thu Mar 11 2010 02:29:46 GMT-0500 (EST)</Date_Created>
+      <Title/>
+      <First_Name>Christopher</First_Name>
+      <MI/>
+      <Last_Name>Doorley</Last_Name>
+      <Suffix/>
+      <Email>chris@example.com</Email>
+      <Password/>
+      <Receive_Email>3</Receive_Email>
+      <Email_Status/>
+      <Email_Preference/>
+      <Soft_Bounce_Count>1</Soft_Bounce_Count>
+      <Hard_Bounce_Count/>
+      <Last_Bounce>Fri Mar 19 2010 17:43:20 GMT-0400 (EDT)</Last_Bounce>
+      <Receive_Phone_Blasts_BOOLVALUE>false</Receive_Phone_Blasts_BOOLVALUE>
+      <Receive_Phone_Blasts>false</Receive_Phone_Blasts>
+      <Phone/>
+      <Cell_Phone/>
+      <Phone_Provider/>
+      <Work_Phone/>
+      <Pager/>
+      <Home_Fax/>
+      <Work_Fax/>
+      <Street/>
+      <Street_2/>
+      <Street_3/>
+      <City/>
+      <State/>
+      <Zip/>
+      <PRIVATE_Zip_Plus_4>0000</PRIVATE_Zip_Plus_4>
+      <County/>
+      <District/>
+      <Country/>
+      <Latitude/>
+      <Longitude/>
+      <Organization>Velocity Strategies</Organization>
+      <Department/>
+      <Occupation/>
+      <Instant_Messenger_Service/>
+      <Instant_Messenger_Name/>
+      <Web_Page/>
+      <Alternative_Email/>
+      <Other_Data_1/>
+      <Other_Data_2/>
+      <Other_Data_3/>
+      <Notes/>
+      <Source>Web</Source>
+      <Source_Details>http://velocitystrategies.com/contact</Source_Details>
+      <Source_Tracking_Code>(No Original Source Available)</Source_Tracking_Code>
+      <Tracking_Code/>
+      <Status/>
+      <uid/>
+      <Timezone/>
+      <Language_Code/>
+      <BLOB0>This is a test of the email contact system.</BLOB0>
+      <key>31752865</key>
+      <object>supporter</object>
+    </item>
+  </supporter>
+</data>

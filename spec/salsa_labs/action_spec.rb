@@ -51,24 +51,19 @@ describe SalsaLabs::Action do
   end
 
   describe ".fetch" do
-    let(:actions_fetcher) { double('ActionsFetcher', fetch: []) }
+    let(:objects_fetcher) { double('ObjectsFetcher', fetch: []) }
 
     before(:each) do
-      SalsaLabs::ActionsFetcher.stub(new: actions_fetcher)
-    end
-
-    it "calls .fetch on an SalsaLabs::ActionsFetcher object" do
-      SalsaLabs::Action.fetch
-
-      expect(actions_fetcher).to have_received(:fetch)
+      SalsaLabs::ObjectsFetcher.stub(fetch: nil)
     end
 
     it "passes the credentials to actions fetcher" do
       SalsaLabs::Action.fetch(email: 'foo@bar.com', password: 'pass')
 
-      expect(SalsaLabs::ActionsFetcher).to have_received(:new).
-        with({}, {email: 'foo@bar.com', password: 'pass'})
+      expect(SalsaLabs::ObjectsFetcher).to have_received(:fetch).
+        with(credentials: {email: 'foo@bar.com', password: 'pass'},
+             type: 'Action',
+             item_class: SalsaLabs::Action)
     end
   end
-
 end
