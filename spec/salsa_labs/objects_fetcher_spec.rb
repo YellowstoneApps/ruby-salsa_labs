@@ -26,14 +26,29 @@ describe SalsaLabs::ObjectsFetcher do
       expect(results).to be_a(Array)
       expect(results.first).to be_a(SalsaLabs::Action)
     end
+  end
 
-    it "parses the actions" do
-      action = SalsaLabs::ObjectsFetcher.fetch(type: 'Action', item_class: SalsaLabs::Action).fetch.first
+  it "parses actions" do
+    client = double('API Client', fetch: File.read('spec/fixtures/getObjects.sjs_action.xml'))
+    action = SalsaLabs::ObjectsFetcher.new(type: 'Action',
+                                           item_class: SalsaLabs::Action,
+                                           filters: {},
+                                           client: client).fetch.first
 
-      expect(action.action_key).to eq(6656)
-      expect(action.description).to eq("<p>&#160;</p>")
-      expect(action.title).to eq("My Action Title")
-      expect(action.reference_name).to eq("My TItle")
-    end
+    expect(action.action_key).to eq(6656)
+    expect(action.description).to eq("<p>&#160;</p>")
+    expect(action.title).to eq("My Action Title")
+    expect(action.reference_name).to eq("My TItle")
+  end
+
+  it "parses supporters" do
+    client = double('API Client', fetch: File.read('spec/fixtures/getObjects.sjs_supporter.xml'))
+    supporter = SalsaLabs::ObjectsFetcher.new(type: 'supporter',
+                                              item_class: SalsaLabs::Supporter,
+                                              filters: {},
+                                              client: client).fetch.first
+
+    expect(supporter.supporter_key).to eq(31752865)
+    expect(supporter.email).to eq("chris@example.com")
   end
 end
