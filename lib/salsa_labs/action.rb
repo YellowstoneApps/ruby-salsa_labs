@@ -4,7 +4,6 @@ module SalsaLabs
   # the Salsa Labs / DemocracyInAction CRM.
   ##
   class Action < SalsaObject
-
     def action_key
       (attributes['action_key'] || 0).to_i
     end
@@ -22,8 +21,8 @@ module SalsaLabs
     end
 
     def self.fetch(credentials = {})
-      ActionsFetcher.new({}, credentials).fetch
+      ObjectsFetcher.fetch(type: 'Action', item_class: self,
+                           credentials: credentials)
     end
-
   end
 end

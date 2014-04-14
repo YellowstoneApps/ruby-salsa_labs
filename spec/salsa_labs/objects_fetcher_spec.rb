@@ -1,7 +1,6 @@
-require "spec_helper"
+require 'spec_helper'
 
-describe SalsaLabs::ActionsFetcher do
-
+describe SalsaLabs::ObjectsFetcher do
   let(:client) do
     double(
       'API client',
@@ -15,21 +14,21 @@ describe SalsaLabs::ActionsFetcher do
     end
 
     it "calls the getObjects API endpoint" do
-      SalsaLabs::ActionsFetcher.new.fetch
+      SalsaLabs::ObjectsFetcher.fetch(type: 'Action').fetch
 
       expect(client).to have_received(:fetch).
         with('/api/getObjects.sjs', {object: 'Action'})
     end
 
     it "returns an array of SalsaLabs::Action objects" do
-      results = SalsaLabs::ActionsFetcher.new.fetch
+      results = SalsaLabs::ObjectsFetcher.fetch(type: 'Action', item_class: SalsaLabs::Action).fetch
 
       expect(results).to be_a(Array)
       expect(results.first).to be_a(SalsaLabs::Action)
     end
 
     it "parses the actions" do
-      action = SalsaLabs::ActionsFetcher.new.fetch.first
+      action = SalsaLabs::ObjectsFetcher.fetch(type: 'Action', item_class: SalsaLabs::Action).fetch.first
 
       expect(action.action_key).to eq(6656)
       expect(action.description).to eq("<p>&#160;</p>")
@@ -37,5 +36,4 @@ describe SalsaLabs::ActionsFetcher do
       expect(action.reference_name).to eq("My TItle")
     end
   end
-
 end
