@@ -10,7 +10,7 @@ module SalsaLabs
       client = SalsaLabs::ApiClient.new(credentials)
       type = opts.fetch(:type)
       item_class = opts[:item_class] || SalsaLabs::SalsaObject
-      new(filters: filters, client: client, type: type, item_class: item_class)
+      new(filters: filters, client: client, type: type, item_class: item_class).fetch
     end
 
     def initialize(opts = {})

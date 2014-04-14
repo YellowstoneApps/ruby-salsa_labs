@@ -14,14 +14,14 @@ describe SalsaLabs::ObjectsFetcher do
     end
 
     it "calls the getObjects API endpoint" do
-      SalsaLabs::ObjectsFetcher.fetch(type: 'Action').fetch
+      SalsaLabs::ObjectsFetcher.fetch(type: 'Action')
 
       expect(client).to have_received(:fetch).
         with('/api/getObjects.sjs', {object: 'Action'})
     end
 
     it "returns an array of SalsaLabs::Action objects" do
-      results = SalsaLabs::ObjectsFetcher.fetch(type: 'Action', item_class: SalsaLabs::Action).fetch
+      results = SalsaLabs::ObjectsFetcher.fetch(type: 'Action', item_class: SalsaLabs::Action)
 
       expect(results).to be_a(Array)
       expect(results.first).to be_a(SalsaLabs::Action)
