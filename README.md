@@ -24,9 +24,9 @@ Or install it yourself as:
 
 ## Usage
 
-By default, you can store your API credentials as the environment variables ``SALSA_LABS_API_EMAIL`` and ``SALSA_LABS_API_PASSWORD`` to avoid the need to re-enter your password multiple times. Otherwise you will need to pass your credentials into the ``SalsaLabs::ApiClient`` or appropriate fetching method as you call it.
+By default, you can store your API credentials as the environment variables `SALSA_LABS_API_EMAIL` and `SALSA_LABS_API_PASSWORD` to avoid the need to re-enter your password multiple times. Otherwise you will need to pass your credentials into the ``SalsaLabs::ApiClient`` or appropriate fetching method as you call it.
 
-``SalsaLabs::ApiClient`` is a general-purpose object for performing GET requests from the Salsa API. 
+`SalsaLabs::ApiClient` is a general-purpose object for performing GET requests from the Salsa API. 
 
 ```ruby
 # Create a client
@@ -45,7 +45,7 @@ client.fetch('getObjects.sjs', {object: 'Supporter', State: 'DC'})
 You can get a list of API calls and information about Salsa database objects here:
 [https://help.salsalabs.com/entries/23537918-Getting-data-from-Salsa](https://help.salsalabs.com/entries/23537918-Getting-data-from-Salsa)
 
-Currently specific functionality exists to work with Action campaigns, but more objects will be added later.
+Currently specific functionality exists to work with Action campaigns(`SalsaLabs::Action`), Supporters (`SalsaLabs::Supporter`), and the join table Supporter Actions (`SalsaLabs::SupporterAction`), but more objects will be added later.
 
 ```ruby
 # Fetch all actions from Salsa. First argument is filter criteria, second argument is credentials if you are not storing them as environment variables.
@@ -57,7 +57,7 @@ actions.first.attributes
 # => {'title' => 'My Action Title', 'organization_key' => '90210', action_key => '1234'}
 ```
 
-``SalsaLabs::Action#attributes`` returns a hash corresponding to all the attributes returned by the API, so it should accommodate custom fields and/or new fields added later by SalsaLabs. All attribute names are downcased. 
+`SalsaLabs::Action#attributes` returns a hash corresponding to all the attributes returned by the API, so it should accommodate custom fields and/or new fields added later by SalsaLabs. All attribute names are downcased. 
 
 ## Dependencies
 
@@ -65,7 +65,7 @@ Ruby 1.9 is required.
 
 ## Credits
 
-The ``salsa_labs`` gem was created and is maintained by [Allison Sheren](http://github.com/asheren) and [Geoff Harcourt](http://github.com/geoffharcourt).
+The `salsa_labs` gem was created and is maintained by [Allison Sheren](http://github.com/asheren) and [Geoff Harcourt](http://github.com/geoffharcourt).
 
 Development is generously sponsored by [Velocity](http://wearevelocity.com), in support of their work with progressive organizations.
 
@@ -79,6 +79,6 @@ Development is generously sponsored by [Velocity](http://wearevelocity.com), in 
 
 ## License
 
-The ``salsa_labs`` gem is Copyright 2013-2014 Velocity. It is free software, and
+The `salsa_labs` gem is Copyright 2013-2014 Velocity. It is free software, and
 may be redistributed under the terms of the MIT license, specified in the 
 LICENSE file.
