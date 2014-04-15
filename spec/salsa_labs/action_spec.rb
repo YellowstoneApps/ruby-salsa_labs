@@ -62,6 +62,13 @@ describe SalsaLabs::Action do
 
       expect(actions_fetcher).to have_received(:fetch)
     end
+
+    it "passes the credentials to actions fetcher" do
+      SalsaLabs::Action.fetch(email: 'foo@bar.com', password: 'pass')
+
+      expect(SalsaLabs::ActionsFetcher).to have_received(:new).
+        with({}, {email: 'foo@bar.com', password: 'pass'})
+    end
   end
 
 end
