@@ -10,6 +10,7 @@ module SalsaLabs
     def initialize(credentials = {})
       @email = credentials[:email] || ENV['SALSA_LABS_API_EMAIL']
       @password = credentials[:password] || ENV['SALSA_LABS_API_PASSWORD']
+      @host = credentials[:host] || 'hq-salsa.wiredforchange.com'
 
       @authenticated = false
     end
@@ -37,7 +38,8 @@ module SalsaLabs
 
     attr_reader :authenticated,
       :email,
-      :password
+      :password,
+      :host
 
     def authenticate!
       perform_get_request(
@@ -52,7 +54,7 @@ module SalsaLabs
 
     def connection
       @connection ||= Faraday.
-        new(url: 'https://hq-salsa.wiredforchange.com') do |faraday|
+        new(url: "https://#{host}") do |faraday|
 
         faraday.use Faraday::Request::UrlEncoded
         faraday.adapter Faraday.default_adapter

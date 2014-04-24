@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'vcr'
 
 describe SalsaLabs::ApiClient do
-
   let(:api_client) do
     SalsaLabs::ApiClient.new({
       email: 'allison@example.com', password: 'password'
@@ -70,6 +69,18 @@ describe SalsaLabs::ApiClient do
            to eq(salsa_get_objects_for_action_xml_response)
       end
     end
+  end
+
+  it "can be configured with Salsa API host" do
+    url = "https://example.com/api/authenticate.sjs?email=allison@example.com&password=password"
+    successful_login = File.read('spec/fixtures/successful_login.xml')
+    stub_request(:get, url).to_return(body: successful_login)
+
+    SalsaLabs::ApiClient.new(email: 'allison@example.com',
+                             password: 'password',
+                             host: 'example.com').authenticate
+
+    WebMock.should have_requested(:get, url)
   end
 
   def salsa_get_objects_for_action_xml_response
