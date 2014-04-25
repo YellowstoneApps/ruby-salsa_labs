@@ -73,6 +73,8 @@ module SalsaLabs
 
     def perform_get_request(endpoint, params)
       response = connection.get do |request|
+        request.options.timeout = 20  # open/read timeout in seconds
+        request.options.open_timeout = 20
         request.headers['cookie'] = authentication_cookie.to_s
         request.url("#{endpoint}?#{Faraday::FlatParamsEncoder.encode(params)}", {})
       end
@@ -84,6 +86,8 @@ module SalsaLabs
 
     def perform_post_request(endpoint, params)
       response = connection.post do |request|
+        request.options.timeout = 20  # open/read timeout in seconds
+        request.options.open_timeout = 20
         request.headers['cookie'] = authentication_cookie.to_s
         params.update({'xml'=>true}) #tell Salsa we want the response back as XML
 
