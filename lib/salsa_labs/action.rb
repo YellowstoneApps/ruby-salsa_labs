@@ -8,6 +8,10 @@ module SalsaLabs
       (attributes['action_key'] || 0).to_i
     end
 
+    def chapter_key
+      attributes['chapter_key'].to_i if attributes['chapter_key']
+    end
+
     def description
       attributes['description']
     end

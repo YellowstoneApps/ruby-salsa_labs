@@ -7,6 +7,7 @@ describe SalsaLabs::Action do
       'action_key' => '1234',
       'description' => 'Lengthy Description',
       'organization_key' => '90210',
+      'chapter_key' => '234',
       'reference_name' => 'A Good Reference',
       'title' => 'A Distinguished Title'
     }
@@ -17,6 +18,12 @@ describe SalsaLabs::Action do
   describe "#action_key" do
     it "returns the action_key attribute as an integer" do
       expect(action.action_key).to eq(1234)
+    end
+  end
+
+  describe "#chapter_key" do
+    it "returns the chapter_key attribute as an integer" do
+      expect(action.chapter_key).to eq(234)
     end
   end
 
