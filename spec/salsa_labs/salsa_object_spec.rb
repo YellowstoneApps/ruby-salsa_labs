@@ -22,5 +22,4 @@ describe SalsaLabs::SalsaObject do
       expect(salsa_object.organization_key).to eq(456)
     end
   end
-
 end
