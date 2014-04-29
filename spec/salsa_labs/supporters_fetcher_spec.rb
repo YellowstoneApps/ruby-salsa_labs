@@ -42,6 +42,7 @@ describe SalsaLabs::SupportersFetcher do
       specify { supporter.receive_email.should eq(true) }
       specify { supporter.first_name.should eq('John') }
       specify { supporter.source_tracking_code.should eq('(No Original Source Available)')}
+      specify { supporter.tracking_code.should eq('')}
     end
   end
 end

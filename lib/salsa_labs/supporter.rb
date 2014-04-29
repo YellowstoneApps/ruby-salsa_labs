@@ -7,7 +7,8 @@ module SalsaLabs
   class Supporter < SalsaObject
     integer_attributes :supporter_key, :chapter_key
     string_attributes :title, :first_name, :last_name, :mi, :suffix, :email, :phone, :street, :street_2, :city, :state,
-                      :zip, :country, :source, :status, :timezone, :language_code, :source_tracking_code, :source_details
+                      :zip, :country, :source, :status, :timezone, :language_code, :source_tracking_code, :source_details,
+                      :tracking_code
 
     boolean_attributes :receive_email
 

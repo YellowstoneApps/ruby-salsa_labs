@@ -22,7 +22,8 @@ describe SalsaLabs::Supporter do
       'zip' => '12345',
       'country' => 'USA',
       'source' => 'rspec',
-      'status' => 'Active'
+      'status' => 'Active',
+      'tracking_code' => 'abc123'
     }
   end
 
@@ -159,6 +160,12 @@ describe SalsaLabs::Supporter do
   describe "#status" do
     it "returns the status as an attribute" do
       expect(supporter.status).to eq('Active')
+    end
+  end
+
+  describe "#tracking_code" do
+    it "returns the status as an attribute" do
+      expect(supporter.tracking_code).to eq('abc123')
     end
   end
 
