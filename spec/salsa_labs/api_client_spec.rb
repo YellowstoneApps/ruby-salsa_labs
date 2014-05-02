@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'vcr'
 
 describe SalsaLabs::ApiClient do
-
   let(:api_client) do
     SalsaLabs::ApiClient.new({
       email: 'allison@example.com', password: 'password'
@@ -12,7 +11,7 @@ describe SalsaLabs::ApiClient do
   describe "#authenticate" do
     it "stores the cookie from Salsa Labs" do
       VCR.use_cassette 'successful_authentication',
-        match_requests_on: [:path] do
+        match_requests_on: [:host, :path] do
 
         api_client.authenticate
 
@@ -28,7 +27,7 @@ describe SalsaLabs::ApiClient do
     context "with proper credentials" do
       it "sets authenticated to be true" do
         VCR.use_cassette 'successful_authentication',
-          match_requests_on: [:path] do
+          match_requests_on: [:host, :path] do
 
           api_client.authenticate
 
@@ -41,7 +40,7 @@ describe SalsaLabs::ApiClient do
     context "with improper credentials" do
       it "raises an exception" do
         VCR.use_cassette 'unsuccessful_authentication',
-          match_requests_on: [:path] do
+          match_requests_on: [:host, :path] do
 
           expect{
             api_client.authenticate
@@ -62,7 +61,7 @@ describe SalsaLabs::ApiClient do
   describe "#fetch" do
     it "returns the body of the response from Salsa Labs for that API call" do
       VCR.use_cassette 'get_objects/action',
-        match_requests_on: [:path] do
+        match_requests_on: [:host, :path] do
 
         data = api_client.fetch('/api/getObjects.sjs', object: 'Action')
 
@@ -70,6 +69,18 @@ describe SalsaLabs::ApiClient do
            to eq(salsa_get_objects_for_action_xml_response)
       end
     end
+  end
+
+  it "can be configured with Salsa API host" do
+    url = "https://example.com/api/authenticate.sjs?email=allison@example.com&password=password"
+    successful_login = File.read('spec/fixtures/successful_login.xml')
+    stub_request(:get, url).to_return(body: successful_login)
+
+    SalsaLabs::ApiClient.new(email: 'allison@example.com',
+                             password: 'password',
+                             host: 'example.com').authenticate
+
+    WebMock.should have_requested(:get, url)
   end
 
   def salsa_get_objects_for_action_xml_response
