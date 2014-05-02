@@ -11,7 +11,7 @@ describe SalsaLabs::ApiClient do
   describe "#authenticate" do
     it "stores the cookie from Salsa Labs" do
       VCR.use_cassette 'successful_authentication',
-        match_requests_on: [:path] do
+        match_requests_on: [:host, :path] do
 
         api_client.authenticate
 
@@ -27,7 +27,7 @@ describe SalsaLabs::ApiClient do
     context "with proper credentials" do
       it "sets authenticated to be true" do
         VCR.use_cassette 'successful_authentication',
-          match_requests_on: [:path] do
+          match_requests_on: [:host, :path] do
 
           api_client.authenticate
 
@@ -40,7 +40,7 @@ describe SalsaLabs::ApiClient do
     context "with improper credentials" do
       it "raises an exception" do
         VCR.use_cassette 'unsuccessful_authentication',
-          match_requests_on: [:path] do
+          match_requests_on: [:host, :path] do
 
           expect{
             api_client.authenticate
@@ -61,7 +61,7 @@ describe SalsaLabs::ApiClient do
   describe "#fetch" do
     it "returns the body of the response from Salsa Labs for that API call" do
       VCR.use_cassette 'get_objects/action',
-        match_requests_on: [:path] do
+        match_requests_on: [:host, :path] do
 
         data = api_client.fetch('/api/getObjects.sjs', object: 'Action')
 
