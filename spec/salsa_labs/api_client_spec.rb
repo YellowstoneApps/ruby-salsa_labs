@@ -27,7 +27,7 @@ describe SalsaLabs::ApiClient do
 
           api_client.authenticate
 
-          expect(api_client.authenticated?).to be_true
+          expect(api_client.authenticated?).to be_truthy
         end
       end
 
