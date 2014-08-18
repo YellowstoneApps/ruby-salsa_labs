@@ -1,7 +1,6 @@
 require 'faraday'
 require 'nokogiri'
 
-require 'faraday/flat_params_encoder'
 require 'salsa_labs/version'
 require 'salsa_labs/api_client'
 require 'salsa_labs/salsa_object'
