@@ -20,6 +20,9 @@ module SalsaLabs
       SupportersFetcher.new(filter_parameters).tagged(tag)
     end
 
+    def tracking_info_blank?
+      (self.source_details.blank? && self.source_tracking_code.blank?) || (self.source_details =~ /No Referring info/ &&  self.source_tracking_code =~ /No Original Source/)
+    end
   end
 
   ##

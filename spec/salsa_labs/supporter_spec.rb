@@ -23,6 +23,8 @@ describe SalsaLabs::Supporter do
       'country' => 'USA',
       'source' => 'rspec',
       'status' => 'Active',
+      'source_details' => 'foo123',
+      'source_tracking_code' => 'foo123',
       'tracking_code' => 'abc123'
     }
   end
@@ -166,6 +168,46 @@ describe SalsaLabs::Supporter do
   describe "#tracking_code" do
     it "returns the status as an attribute" do
       expect(supporter.tracking_code).to eq('abc123')
+    end
+  end
+
+  describe '#tracking_info_blank?' do
+    context 'source details and tracking code filled in' do
+      it 'should be false' do
+        expect(supporter.tracking_info_blank?).to be_falsey
+      end
+    end
+
+    context 'source_details nil, source_tracking_code filled in' do
+      before(:each) do
+        supporter.source_details = nil
+      end
+
+      it 'should be false' do
+        expect(supporter.tracking_info_blank?).to be_falsey
+      end
+    end
+
+    context 'source_details nil, source_tracking_code nil' do
+      before(:each) do
+        supporter.source_details = nil
+        supporter.source_tracking_code = nil
+      end
+
+      it 'should be true' do
+        expect(supporter.tracking_info_blank?).to be_truthy
+      end
+    end
+
+    context 'source_details default, source_tracking_code default' do
+      before(:each) do
+        supporter.source_details = 'No Referring info'
+        supporter.source_tracking_code = 'No Original Source'
+      end
+
+      it 'should be true' do
+        expect(supporter.tracking_info_blank?).to be_truthy
+      end
     end
   end
 
