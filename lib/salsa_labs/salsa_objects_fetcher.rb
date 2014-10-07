@@ -45,7 +45,11 @@ module SalsaLabs
 
     def item_objects(url)
       item_nodes(url).map do |node|
-        @object_class.new(ApiObjectNode.new(node).attributes)
+        obj = @object_class.new(ApiObjectNode.new(node).attributes)
+        if obj.attributes['result'] == 'error'
+          raise SalsaLabs::Error(obj.attributes['message'])
+        end
+        obj
       end
     end
 
