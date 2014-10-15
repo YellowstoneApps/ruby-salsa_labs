@@ -16,7 +16,6 @@ module SalsaLabs
       else
         raise SalsaLabs::Error.new(response),
           "Unable to save object: #{response}"
-        return false
       end
     end
 
