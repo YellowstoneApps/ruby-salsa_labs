@@ -36,6 +36,11 @@ describe SalsaLabs::Supporter do
     it 'should accept symbol keys' do
       supporter.first_name.should == 'George'
     end
+
+    it 'should be a supporter' do
+      expect(SalsaLabs::Supporter.object_name).to eq('supporter')
+      expect(supporter.object_name).to eq('supporter')
+    end
   end
 
   describe "#attributes" do

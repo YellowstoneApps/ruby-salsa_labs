@@ -16,8 +16,12 @@ module SalsaLabs
       (attributes['organization_key'] || 0).to_i
     end
 
+    def self.object_name
+      name.split('::').last.downcase
+    end
+
     def object_name
-      self.class.name.split('::').last.downcase
+      self.class.object_name
     end
 
     def object_key

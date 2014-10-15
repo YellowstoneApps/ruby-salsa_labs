@@ -39,7 +39,7 @@ module SalsaLabs
         params = {} 
       end
 
-      params.merge(object: @object_class.name.split('::').last.downcase)
+      params.merge(object: @object_class.object_name)
     end
 
 
