@@ -38,11 +38,11 @@ describe SalsaLabs::SupportersFetcher do
     describe 'supporter parsing' do
       let(:supporter) { SalsaLabs::SupportersFetcher.new.fetch.first }
 
-      specify { supporter.supporter_key.should eq(33984504)  }
-      specify { supporter.receive_email.should eq(true) }
-      specify { supporter.first_name.should eq('John') }
-      specify { supporter.source_tracking_code.should eq('(No Original Source Available)')}
-      specify { supporter.tracking_code.should eq('')}
+      specify { expect(supporter.supporter_key).to eq(33984504)  }
+      specify { expect(supporter.receive_email).to eq(true) }
+      specify { expect(supporter.first_name).to eq('John') }
+      specify { expect(supporter.source_tracking_code).to eq('(No Original Source Available)')}
+      specify { expect(supporter.tracking_code).to eq('')}
     end
   end
 end

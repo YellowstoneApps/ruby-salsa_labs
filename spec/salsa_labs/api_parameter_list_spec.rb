@@ -61,10 +61,10 @@ describe SalsaLabs::ApiObjectParameterList do
       expect(api_parameters.attributes['Zip']).to eq('12345')
 
       #negative tests
-      api_parameters.attributes.should_not include('supporter_key')
-      api_parameters.attributes.should_not include('private_zip_plus_4')
-      api_parameters.attributes.should_not include('mi')
-      api_parameters.attributes.should_not include('title')
+      expect(api_parameters.attributes).to_not include('supporter_key')
+      expect(api_parameters.attributes).to_not include('private_zip_plus_4')
+      expect(api_parameters.attributes).to_not include('mi')
+      expect(api_parameters.attributes).to_not include('title')
     end
   end
 

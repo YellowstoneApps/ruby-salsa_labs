@@ -95,7 +95,7 @@ describe SalsaLabs::ApiClient do
       VCR.use_cassette 'successful_authentication', match_requests_on: [:path] do
         VCR.use_cassette 'get_objects/supporters_by_email', match_requests_on: [:path, :query] do
           supporters = SalsaLabs::SupportersFetcher.new({'Email' => 'george@washington.com'}, {email: 'user@example.com', password: 'correct_password'}).fetch
-          supporters.should_not be_empty
+          expect(supporters).to_not be_empty
         end
       end
     end

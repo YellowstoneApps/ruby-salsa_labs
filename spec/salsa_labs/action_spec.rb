@@ -54,7 +54,7 @@ describe SalsaLabs::Action do
     let(:actions_fetcher) { double('ActionsFetcher', fetch: []) }
 
     before(:each) do
-      SalsaLabs::ActionsFetcher.stub(new: actions_fetcher)
+      allow(SalsaLabs::ActionsFetcher).to receive(:new).and_return(actions_fetcher)
     end
 
     it "calls .fetch on an SalsaLabs::ActionsFetcher object" do

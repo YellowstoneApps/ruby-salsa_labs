@@ -34,7 +34,7 @@ describe SalsaLabs::Supporter do
   describe 'initialization' do
     let(:attributes) { {:first_name => 'George'} }
     it 'should accept symbol keys' do
-      supporter.first_name.should == 'George'
+      expect(supporter.first_name).to eq('George')
     end
 
     it 'should be a supporter' do
@@ -220,7 +220,7 @@ describe SalsaLabs::Supporter do
     let(:supporters_fetcher) { double('SupportersFetcher', fetch: []) }
 
     before(:each) do
-      SalsaLabs::SupportersFetcher.stub(new: supporters_fetcher)
+      allow(SalsaLabs::SupportersFetcher).to receive(:new).and_return(supporters_fetcher)
     end
 
     it "calls .fetch on an SalsaLabs::SupportersFetcher object" do
@@ -235,7 +235,7 @@ describe SalsaLabs::Supporter do
     let(:object_saver) { double('SalsaObjectsSaver', save: []) }
 
     before(:each) do
-      SalsaLabs::SalsaObjectsSaver.stub(new: object_saver)
+      allow(SalsaLabs::SalsaObjectsSaver).to receive(:new).and_return(object_saver)
     end
 
     it "calls .fetch on an SalsaLabs::SupportersFetcher object" do
