@@ -10,7 +10,10 @@ module SalsaLabs
 
     def save(data)
       parameters = SalsaLabs::ApiObjectParameterList.new(data)
-      response = parse_response(api_call(parameters.attributes))
+      filtered_params = parameters.attributes.delete_if { |key, value| key == 'Date_Created'}
+        
+      response = parse_response(api_call(filtered_params))
+
       if response.css('success')
         return response.css('success').attribute('key').value.to_i
       else

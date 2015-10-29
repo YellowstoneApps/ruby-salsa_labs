@@ -65,6 +65,8 @@ module SalsaLabs
         new(url: @api_url) do |faraday|
         
         faraday.use Faraday::Request::UrlEncoded
+        faraday.use Faraday::Response::Logger if ENV['DEBUG']
+        faraday.response :logger
         # not available until faraday 0.9
         #Faraday::Utils.default_params_encoder = Faraday::FlatParamsEncoder #do not nest repeated parameters
         faraday.adapter Faraday.default_adapter

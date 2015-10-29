@@ -27,6 +27,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'vcr', '~> 2.8'
   gem.add_development_dependency 'webmock', '~> 1.16'
   gem.add_development_dependency 'pry'
+  gem.add_development_dependency 'faker'
   gem.add_development_dependency 'pry-byebug'
   gem.add_development_dependency 'guard'
   gem.add_development_dependency 'guard-rspec'
