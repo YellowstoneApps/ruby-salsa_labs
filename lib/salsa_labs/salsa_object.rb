@@ -81,5 +81,20 @@ module SalsaLabs
       end
     end
 
+    def self.datetime_attributes(*methods)
+      methods.each do |method|
+        define_method("#{method}=") do | value |
+          attributes[method.to_s] = value
+        end
+
+        define_method(method) do
+          if attributes[method.to_s]
+            DateTime.parse(attributes[method.to_s])
+          else
+            nil
+          end
+        end
+      end
+    end
   end
 end

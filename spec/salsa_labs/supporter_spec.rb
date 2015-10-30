@@ -25,7 +25,9 @@ describe SalsaLabs::Supporter do
       'status' => 'Active',
       'source_details' => 'foo123',
       'source_tracking_code' => 'foo123',
-      'tracking_code' => 'abc123'
+      'tracking_code' => 'abc123',
+      'date_created' => 'Fri Mar 14 2014 14:07:29 GMT-0400 (EDT)',
+      'last_modified' => 'Fri Mar 14 2014 13:54:10 GMT-0400 (EDT)'
     }
   end
 
@@ -173,6 +175,13 @@ describe SalsaLabs::Supporter do
   describe "#tracking_code" do
     it "returns the status as an attribute" do
       expect(supporter.tracking_code).to eq('abc123')
+    end
+  end
+
+  describe 'dates' do
+    it "returns the status as an attribute" do
+      expect(supporter.date_created.iso8601).to eq('2014-03-14T14:07:29-04:00')
+      expect(supporter.last_modified.iso8601).to eq('2014-03-14T13:54:10-04:00')
     end
   end
 

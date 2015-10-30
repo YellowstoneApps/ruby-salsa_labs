@@ -5,7 +5,7 @@ require 'dotenv'
 Dotenv.load
 
 credentials = {email: ENV['SALSA_LABS_API_EMAIL'], password: ENV['SALSA_LABS_API_PASSWORD'], url: ENV['https://sandbox.salsalabs.com']}
-client = SalsaLabs::ApiClient.new credentials
+client = SalsaLabs::ApiClient.new(credentials)
 
 require 'pry-byebug'
 binding.pry
