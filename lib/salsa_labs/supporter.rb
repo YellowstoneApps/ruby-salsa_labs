@@ -26,6 +26,11 @@ module SalsaLabs
       supporter_actions_fetch.fetch
     end
 
+    def emails(credentials)
+      emails_fetch = SalsaLabs::EmailsFetcher.new({'supporter_KEY' => self.supporter_key}, credentials)
+      emails_fetch.fetch
+    end
+
     def tracking_info_blank?
       (self.source_details.blank? && self.source_tracking_code.blank?) || (self.source_details =~ /No Referring info/ &&  self.source_tracking_code =~ /No Original Source/)
     end
