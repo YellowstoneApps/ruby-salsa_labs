@@ -88,7 +88,7 @@ module SalsaLabs
         end
 
         define_method(method) do
-          if attributes[method.to_s]
+          if attributes[method.to_s].present?
             DateTime.parse(attributes[method.to_s])
           else
             nil

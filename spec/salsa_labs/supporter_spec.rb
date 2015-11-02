@@ -182,6 +182,9 @@ describe SalsaLabs::Supporter do
     it "returns the status as an attribute" do
       expect(supporter.date_created.iso8601).to eq('2014-03-14T14:07:29-04:00')
       expect(supporter.last_modified.iso8601).to eq('2014-03-14T13:54:10-04:00')
+
+      supporter.date_created = ''
+      expect(supporter.date_created).to be_nil
     end
   end
 
