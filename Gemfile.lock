@@ -3,9 +3,9 @@ PATH
   specs:
     salsa_labs (0.0.4)
       dotenv
-      faraday (~> 0.8)
-      httparty (~> 0.12)
-      nokogiri (~> 1.5)
+      faraday (>= 0.8)
+      httparty (>= 0.12)
+      nokogiri (>= 1.5)
 
 GEM
   remote: https://rubygems.org/

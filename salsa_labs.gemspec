@@ -17,9 +17,9 @@ Gem::Specification.new do |gem|
   gem.licenses      = ['LICENSE']
 
   gem.add_runtime_dependency 'dotenv'
-  gem.add_runtime_dependency 'faraday', '~> 0.8'
-  gem.add_runtime_dependency 'httparty', '~> 0.12'
-  gem.add_runtime_dependency 'nokogiri', '~> 1.5'
+  gem.add_runtime_dependency 'faraday', '>= 0.8'
+  gem.add_runtime_dependency 'httparty', '>= 0.12'
+  gem.add_runtime_dependency 'nokogiri', '>= 1.5'
 
   gem.add_development_dependency 'guard'
   gem.add_development_dependency 'guard-rspec'
