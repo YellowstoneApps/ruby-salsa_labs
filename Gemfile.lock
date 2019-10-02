@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    salsa_labs (0.0.5)
+    salsa_labs (0.0.6)
       dotenv
       faraday
       httparty
