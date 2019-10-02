@@ -20,7 +20,7 @@ GEM
     dotenv (2.7.5)
     faraday (0.16.2)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.17)
+    ffi (1.11.1)
     formatador (0.2.5)
     guard (2.14.0)
       formatador (>= 0.2.4)
