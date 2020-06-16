@@ -86,5 +86,5 @@ describe SalsaLabs::ApiClient do
   def salsa_get_objects_for_action_xml_response
     File.read('spec/fixtures/getObjects.sjs_action.xml').gsub(/\n|\s{2,}/, '')
   end
-
 end
+
