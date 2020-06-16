@@ -19,11 +19,11 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'dotenv', '~> 2.7'
   gem.add_runtime_dependency 'faraday', '~> 0.8'
   gem.add_runtime_dependency 'httparty', '~> 0.12'
-  gem.add_runtime_dependency 'nokogiri', '~> 1.5'
+  gem.add_runtime_dependency 'nokogiri', '>= 1.5'
 
   gem.add_development_dependency 'guard', '~> 2.14'
   gem.add_development_dependency 'guard-rspec', '~> 4.3'
-  gem.add_development_dependency 'rake', '~> 10.1.1'
+  gem.add_development_dependency 'rake', '>= 10.1.1'
   gem.add_development_dependency 'rspec', '~> 2.14'
   gem.add_development_dependency 'simplecov', '~> 0.8'
   gem.add_development_dependency 'vcr', '~> 2.8'
