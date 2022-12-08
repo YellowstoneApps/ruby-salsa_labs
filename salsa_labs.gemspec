@@ -16,9 +16,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
   gem.licenses      = ['MIT']
 
-  gem.add_runtime_dependency 'dotenv', '~> 2.7'
-  gem.add_runtime_dependency 'faraday', '~> 0.8'
-  gem.add_runtime_dependency 'httparty', '~> 0.12'
+  gem.add_runtime_dependency 'faraday', '>= 0.8'
   gem.add_runtime_dependency 'nokogiri', '>= 1.5'
 
   gem.add_development_dependency 'guard', '~> 2'
